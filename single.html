@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Document</title>
+    <style>
+      :root {
+        --ratio-din: 1.414;
+        --ratio-ermak: 1.581;
+        --ratio-fibonacci: 1.618;
+        --ratio-third: calc (5/3);
+        --adaptive-ratio-difference: 3.8;
+        --adaptive-ratio-proportion: 57;
+
+        --base-size: 20;
+        --min-base-size: 1;
+        --base-line-height: 1.2;
+        --ratio: var(--ratio-fibonacci);
+        --adaptive-ratio: calc(1.11 * var(--calc-precision));
+        --calc-precision: 10000;
+
+        --size-text: max(
+          calc(
+            1px * var(--base-size) * var(--adaptive-ratio) /
+              var(--calc-precision)
+          ),
+          calc(1px * var(--min-base-size))
+        );
+        --size-subtext: calc(var(--size-text) / var(--ratio));
+        --size-subcaption: calc(var(--size-text) * var(--ratio));
+        --size-caption: calc(var(--size-subcaption) * var(--ratio));
+        --size-title: calc(var(--size-caption) * var(--ratio));
+
+        --size-small-text: calc((var(--size-subtext) + var(--size-text)) / 2);
+
+        --line-height-subtext: calc(
+          var(--base-line-height) * 1.25 * var(--adaptive-ratio) /
+            var(--calc-precision)
+        );
+        --line-height-text: calc(
+          var(--base-line-height) * 1.125 * var(--adaptive-ratio) /
+            var(--calc-precision)
+        );
+        --line-height-subcaption: calc(
+          var(--base-line-height) * 1.05 * var(--adaptive-ratio) /
+            var(--calc-precision)
+        );
+        --line-height-caption: calc(
+          var(--base-line-height) * 1 * var(--adaptive-ratio) /
+            var(--calc-precision)
+        );
+        --line-height-title: calc(
+          var(--base-line-height) * 0.8 * var(--adaptive-ratio) /
+            var(--calc-precision)
+        );
+
+        --line-height-small-text: calc(
+          (var(--line-height-subtext) + var(--line-height-subcaption)) / 2
+        );
+      }
+
+      @media only screen and (max-width: 1325px) {
+        :root {
+          --adaptive-ratio: calc(
+            1325 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * 2
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 1210px) {
+        :root {
+          --adaptive-ratio: calc(
+            1210 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * 1
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 1110px) {
+        :root {
+          --adaptive-ratio: calc(
+            1110 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * 0
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 995px) {
+        :root {
+          --adaptive-ratio: calc(
+            995 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -1
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 896px) {
+        :root {
+          --adaptive-ratio: calc(
+            896 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -2
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 801px) {
+        :root {
+          --adaptive-ratio: calc(
+            801 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -3
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 712px) {
+        :root {
+          --adaptive-ratio: calc(
+            712 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -4
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 628px) {
+        :root {
+          --adaptive-ratio: calc(
+            628 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -5
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 550px) {
+        :root {
+          --adaptive-ratio: calc(
+            550 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -6
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 477px) {
+        :root {
+          --adaptive-ratio: calc(
+            477 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -7
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 409px) {
+        :root {
+          --adaptive-ratio: calc(
+            409 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -8
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 346px) {
+        :root {
+          --adaptive-ratio: calc(
+            346 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -9
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      @media only screen and (max-width: 288px) {
+        :root {
+          --adaptive-ratio: calc(
+            288 /
+              (
+                var(--adaptive-ratio-proportion) +
+                  var(--adaptive-ratio-difference) * -10
+              ) / var(--base-size) * var(--calc-precision)
+          );
+        }
+      }
+
+      html {
+        font-size: var(--size-text);
+        line-height: var(--line-height-text);
+        overflow-x: hidden !important;
+        height: 100%;
+      }
+      h1 {
+        font-size: var(--size-title);
+        line-height: var(--line-height-title);
+      }
+      h2 {
+        font-size: var(--size-caption);
+        line-height: var(--line-height-caption);
+      }
+      h3 {
+        font-size: var(--size-subcaption);
+        line-height: var(--line-height-subcaption);
+      }
+      p {
+        font-size: var(--size-text);
+        line-height: var(--line-height-text);
+      }
+      p.small {
+        font-size: var(--size-small-text);
+        line-height: var(--line-height-small-text);
+      }
+      sub {
+        font-size: var(--size-subtext);
+        line-height: var(--line-height-subtext);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem Ipsum</h1>
+    <h2>
+      "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел
+      бы иметь её просто потому, что это боль.."
+    </h2>
+    <h3>Что такое Lorem Ipsum?</h3>
+    <p>
+      Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+      Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала
+      XVI века. В то время некий безымянный печатник создал большую коллекцию
+      размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.
+      Lorem Ipsum не только успешно пережил без заметных изменений пять веков,
+      но и перешагнул в электронный дизайн. Его популяризации в новое время
+      послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах
+      и, в более недавнее время, программы электронной вёрстки типа Aldus
+      PageMaker, в шаблонах которых используется Lorem Ipsum. Почему он
+      используется? Давно выяснено, что при оценке дизайна и композиции читаемый
+      текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот
+      обеспечивает более или менее стандартное заполнение шаблона, а также
+      реальное распределение букв и пробелов в абзацах, которое не получается
+      при простой дубликации "
+    </p>
+    <p class="small">Здесь ваш текст..</p>
+    <sub>Здесь ваш текст..</sub> Здесь ваш текст.." Многие программы электронной
+    вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по
+    умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает,
+    как много веб-страниц всё ещё дожидаются своего настоящего рождения. За
+    прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии
+    появились по ошибке, некоторые - намеренно (например, юмористические
+    варианты). Откуда он появился? Многие думают, что Lorem Ipsum - взятый с
+    потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят
+    в один фрагмент классической латыни 45 года н.э., то есть более двух
+    тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа
+    Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem
+    Ipsum, "consectetur", и занялся его поисками в классической латинской
+    литературе. В результате он нашёл неоспоримый первоисточник Lorem Ipsum в
+    разделах 1.10.32 и 1.10.33 книги "de Finibus Bonorum et Malorum" ("О
+    пределах добра и зла"), написанной Цицероном в 45 году н.э. Этот трактат по
+    теории этики был очень популярен в эпоху Возрождения. Первая строка Lorem
+    Ipsum, "Lorem ipsum dolor sit amet..", происходит от одной из строк в
+    разделе 1.10.32 Классический текст Lorem Ipsum, используемый с XVI века,
+    приведён ниже. Также даны разделы 1.10.32 и 1.10.33 "de Finibus Bonorum et
+    Malorum" Цицерона и их английский перевод, сделанный H. Rackham, 1914 год.
+    Где его взять? Есть много вариантов Lorem Ipsum, но большинство из них имеет
+    не всегда приемлемые модификации, например, юмористические вставки или
+    слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem
+    Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки,
+    скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum
+    используют один и тот же текст, который они просто повторяют, пока не
+    достигнут нужный объём. Это делает предлагаемый здесь генератор единственным
+    настоящим Lorem Ipsum генератором. Он использует словарь из более чем 200
+    латинских слов, а также набор моделей предложений. В результате
+    сгенерированный Lorem Ipsum выглядит правдоподобно, не имеет повторяющихся
+    абзацей или "невозможных" слов.
+  </body>
+</html>
