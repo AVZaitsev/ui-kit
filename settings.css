@@ -4,44 +4,47 @@
   --ratio-ermak: 1.581;
   --ratio-fibonacci: 1.618;
   --ratio-third: calc (5/3);
-  --adaptive-ratio-difference: 2.62;
-  --adaptive-ratio-proportion: 60;
+  --adaptive-ratio-difference: 3.8;
+  --adaptive-ratio-proportion: 57;
 
-  /* Configure here */
-  --base-size: 20px;
-  --base-line-height: 120%;
+  --base-size: 20;
+  --min-base-size: 1;
+  --base-line-height: 1.2;
   --ratio: var(--ratio-fibonacci);
-  --adaptive-ratio: 1.11;
-  /* == Configure here == */
+  --adaptive-ratio: calc(1.11 * var(--calc-precision));
+  --calc-precision: 10000;
 
-  --size-subtext: calc(var(--size-text) / var(--ratio) * var(--adaptive-ratio));
-  --size-text: calc(var(--base-size) * var(--ratio) * var(--adaptive-ratio));
-  --size-subcaption: calc(
-    var(--size-text) * var(--ratio) * var(--adaptive-ratio)
+  --size-text: max(
+    calc(
+      1px * var(--base-size) * var(--adaptive-ratio) / var(--calc-precision)
+    ),
+    calc(1px * var(--min-base-size))
   );
-  --size-caption: calc(
-    var(--size-subcaption) * var(--ratio) * var(--adaptive-ratio)
-  );
-  --size-title: calc(
-    var(--size-caption) * var(--ratio) * var(--adaptive-ratio)
-  );
+  --size-subtext: calc(var(--size-text) / var(--ratio));
+  --size-subcaption: calc(var(--size-text) * var(--ratio));
+  --size-caption: calc(var(--size-subcaption) * var(--ratio));
+  --size-title: calc(var(--size-caption) * var(--ratio));
 
-  --size-small-text: calc((var(--size-subtext) + var(--size-subcaption)) / 2);
+  --size-small-text: calc((var(--size-subtext) + var(--size-text)) / 2);
 
   --line-height-subtext: calc(
-    var(--base-line-height) * 1.25 * var(--adaptive-ratio)
+    var(--base-line-height) * 1.25 * var(--adaptive-ratio) /
+      var(--calc-precision)
   );
   --line-height-text: calc(
-    var(--base-line-height) * 1.125 * var(--adaptive-ratio)
+    var(--base-line-height) * 1.125 * var(--adaptive-ratio) /
+      var(--calc-precision)
   );
   --line-height-subcaption: calc(
-    var(--base-line-height) * 1.05 * var(--adaptive-ratio)
+    var(--base-line-height) * 1.05 * var(--adaptive-ratio) /
+      var(--calc-precision)
   );
   --line-height-caption: calc(
-    var(--base-line-height) * 1 * var(--adaptive-ratio)
+    var(--base-line-height) * 1 * var(--adaptive-ratio) / var(--calc-precision)
   );
   --line-height-title: calc(
-    var(--base-line-height) * 0.8 * var(--adaptive-ratio)
+    var(--base-line-height) * 0.8 * var(--adaptive-ratio) /
+      var(--calc-precision)
   );
 
   --line-height-small-text: calc(
@@ -52,11 +55,11 @@
 @media only screen and (max-width: 1325px) {
   :root {
     --adaptive-ratio: calc(
-      1325px /
+      1325 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             2
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -64,11 +67,11 @@
 @media only screen and (max-width: 1210px) {
   :root {
     --adaptive-ratio: calc(
-      1210px /
+      1210 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             1
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -76,11 +79,11 @@
 @media only screen and (max-width: 1110px) {
   :root {
     --adaptive-ratio: calc(
-      1110px /
+      1110 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             0
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -88,11 +91,11 @@
 @media only screen and (max-width: 995px) {
   :root {
     --adaptive-ratio: calc(
-      995px /
+      995 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -1
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -100,11 +103,11 @@
 @media only screen and (max-width: 896px) {
   :root {
     --adaptive-ratio: calc(
-      896px /
+      896 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -2
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -112,11 +115,11 @@
 @media only screen and (max-width: 801px) {
   :root {
     --adaptive-ratio: calc(
-      801px /
+      801 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -3
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -124,11 +127,11 @@
 @media only screen and (max-width: 712px) {
   :root {
     --adaptive-ratio: calc(
-      712px /
+      712 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -4
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -136,11 +139,11 @@
 @media only screen and (max-width: 628px) {
   :root {
     --adaptive-ratio: calc(
-      628px /
+      628 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -5
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -148,11 +151,11 @@
 @media only screen and (max-width: 550px) {
   :root {
     --adaptive-ratio: calc(
-      550px /
+      550 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -6
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -160,11 +163,11 @@
 @media only screen and (max-width: 477px) {
   :root {
     --adaptive-ratio: calc(
-      477px /
+      477 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -7
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -172,11 +175,11 @@
 @media only screen and (max-width: 409px) {
   :root {
     --adaptive-ratio: calc(
-      409px /
+      409 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -8
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -184,11 +187,11 @@
 @media only screen and (max-width: 346px) {
   :root {
     --adaptive-ratio: calc(
-      346px /
+      346 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -9
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
@@ -196,11 +199,11 @@
 @media only screen and (max-width: 288px) {
   :root {
     --adaptive-ratio: calc(
-      288px /
+      288 /
         (
           var(--adaptive-ratio-proportion) + var(--adaptive-ratio-difference) *
             -10
-        ) / var(--base-size)
+        ) / var(--base-size) * var(--calc-precision)
     );
   }
 }
